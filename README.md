@@ -1,29 +1,15 @@
 # contrast-calculator
+## (UNDER PROGRESS)
+Just another color contrast calculator!
 
-## Project setup
-```
-yarn install
-```
+## Why 
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+Just a quick and funny way to:
+- calculate the color contrast between two colors
+- preview the colors in more real life scenarios: as texts, Titles, buttons...
+- take over the world
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+## Current state
+(don't stare for too much it is hideous!!!)
 
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<img src ="./showcase/current-state.png" />
