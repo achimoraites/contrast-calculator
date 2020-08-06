@@ -12,6 +12,8 @@
             <article class="tile is-child notification">
               <label for="text">Image URL</label>
               <input class="settings__url" type="text" v-model="imageUrl" />
+
+              <chrome-picker :key="render" :value="$data._colorA" @input="setColorA" />
             </article>
             <h3 class="is-size-4">Color A</h3>
             <article
@@ -102,23 +104,42 @@
 </template>
 
 <script>
-import { contrast } from "../lib/ContrastCalculate";
+import { contrast, hexToRgb } from "../lib/ContrastCalculate";
+import { Chrome } from 'vue-color';
+
 export default {
   name: "ContrastCalculator",
   props: {
     msg: String,
   },
+  components: {
+    'chrome-picker': Chrome
+  },
   data: () => ({
     test: "Constrast Calculator",
-    colorA: [255, 255, 255],
+    colorA: [0, 0, 0],
+    _colorA: '',
     colorB: [255, 0, 100],
     imageUrl: "https://bulma.io/images/placeholders/640x480.png",
+    render:  0,
   }),
   computed: {
     contrast() {
       return contrast(this.colorA, this.colorB).toFixed(1);
     },
   },
+  methods: {
+    setColorA(color) {
+      console.log(color)
+        this.colorA = hexToRgb(color.hex);
+        this.$data._colorA = color.hex;
+       console.log(this.colorA)
+       this.render++;
+    }
+  },
+  mounted() {
+    setTimeout(() => contrast(this.colorA, this.colorB), 3000);
+  }
 };
 </script>
 

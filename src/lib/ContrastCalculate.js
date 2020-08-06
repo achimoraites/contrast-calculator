@@ -9,12 +9,40 @@ function luminanace(r, g, b) {
 }
 
 function contrast(rgb1, rgb2) {
-  var lum1 = luminanace(rgb1[0], rgb1[1], rgb1[2]);
-  var lum2 = luminanace(rgb2[0], rgb2[1], rgb2[2]);
+  let { firstColor, secondColor } = sanitizeColors(rgb1, rgb2);
+  var lum1 = luminanace(firstColor[0], firstColor[1], firstColor[2]);
+  var lum2 = luminanace(secondColor[0], secondColor[1], secondColor[2]);
   var brightest = Math.max(lum1, lum2);
   var darkest = Math.min(lum1, lum2);
   return (brightest + 0.05)
        / (darkest + 0.05);
 }
 
+function sanitizeColors(rgb1, rgb2) {
+  let firstColor = rgb1;
+  let secondColor = rgb2;
+  if (!Array.isArray(firstColor)) {
+    firstColor = hexToRgb(rgb1);
+  }
+  if (!Array.isArray(secondColor)) {
+    secondColor = hexToRgb(rgb2);
+  }
+  return { firstColor, secondColor };
+}
+
+function hexToRgb(hex) {
+  // if it is rgb just return it
+  if (Array.isArray(hex)) {
+    return hex;
+  }
+  
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? [
+    parseInt(result[1], 16),
+    parseInt(result[2], 16),
+    parseInt(result[3], 16)
+   ] : null;
+}
+
 module.exports.contrast = contrast;
+module.exports.hexToRgb = hexToRgb;
