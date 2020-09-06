@@ -74,12 +74,12 @@ export default {
   },
   methods: {
     setColorA(color) {
-      this.colorA = color.hex;
-      console.log(this.colorA);
+      const colorA = new String(color.hex).replace('#', '');
+      this.$router.push({ name: 'PreSelectedColors', params: { colorA }})
     },
     setColorB(color) {
-      this.colorB = color.hex;
-      console.log(this.colorB);
+      const colorB = new String(color.hex).replace('#', '');
+      this.$router.push({ name: 'PreSelectedColors', params: { colorB }})
     },
     getColorFromRoute(color) {
       return color ? `#${color}` : null;
