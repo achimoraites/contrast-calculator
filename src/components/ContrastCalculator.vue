@@ -22,7 +22,7 @@
                 <div class="column">
                   <h3 class="is-size-4">Color B</h3>
                   <div
-                    :style="{backgroundColor: `rgb(${colorB})`}"
+                    :style="{backgroundColor: `${colorB}`}"
                     class="tile is-child notification color-bar"
                   ></div>
                   <chrome-picker :disableAlpha="true" :value="colorB" @input="setColorB" />
