@@ -1,18 +1,13 @@
 <template>
   <div id="app">
-    <ContrastCalculator msg="Welcome to Your Vue.js App" />
-    
+    <router-view />
   </div>
 </template>
 
 <script>
-import ContrastCalculator from './components/ContrastCalculator';
 export default {
-  name: 'App',
-  components: {
-    ContrastCalculator,
-  }
-}
+  name: "App",
+};
 </script>
 
 <style>

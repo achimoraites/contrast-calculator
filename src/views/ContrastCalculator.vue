@@ -45,7 +45,7 @@
 
 <script>
 import { contrast } from "../lib/ContrastCalculate";
-import PreviewCard from "./PreviewCard";
+import PreviewCard from "../components/PreviewCard";
 import { Chrome } from "vue-color";
 
 export default {
@@ -65,6 +65,12 @@ export default {
     render: 0,
     inversed: false,
   }),
+    watch: {
+    '$route' (to) {
+      // react to route changes...
+      console.log(to)
+    }
+  },
   computed: {
     contrast() {
       return contrast(this.colorA, this.colorB).toFixed(1);
@@ -83,6 +89,9 @@ export default {
       this.colorA = colorA;
       this.colorB = colorB;
 
+ 
+      // with query, resulting in /register?plan=private
+      console.log(this.$route)
   },
   },
 
