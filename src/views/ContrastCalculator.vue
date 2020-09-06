@@ -1,7 +1,7 @@
 <template>
   <div>
-        <h2 class="is-size-2 mt-0 mb-2">Contrast Calculator</h2>
-    <div class="tile is-ancestor ">
+    <h2 class="is-size-2 mt-0 mb-2">Contrast Calculator</h2>
+    <div class="tile is-ancestor">
       <div class="tile is-vertical parent-container">
         <div class="tile">
           <div class="tile is-parent is-vertical">
@@ -50,9 +50,6 @@ import { Chrome } from "vue-color";
 
 export default {
   name: "ContrastCalculator",
-  props: {
-    msg: String,
-  },
   components: {
     "chrome-picker": Chrome,
     PreviewCard: PreviewCard,
@@ -65,11 +62,10 @@ export default {
     render: 0,
     inversed: false,
   }),
-    watch: {
-    '$route' (to) {
-      // react to route changes...
-      console.log(to)
-    }
+  watch: {
+    $route() {
+      this.updateColors();
+    },
   },
   computed: {
     contrast() {
@@ -85,20 +81,23 @@ export default {
       this.colorB = color.hex;
       console.log(this.colorB);
     },
-    updateColors(colorA = '#000000', colorB = '#ffffff') {
-      this.colorA = colorA;
-      this.colorB = colorB;
+    getColorFromRoute(color) {
+      return color ? `#${color}` : null;
+    },
+    updateColors() {
+      const params = { ...this.$route.params };
 
- 
-      // with query, resulting in /register?plan=private
-      console.log(this.$route)
-  },
+      const colorA = this.getColorFromRoute(params.colorA);
+      const colorB = this.getColorFromRoute(params.colorB);
+
+      this.colorA = colorA ? colorA : "#000000";
+      this.colorB = colorB ? colorB : "#ffffff";
+    },
   },
 
   mounted() {
-
     this.updateColors();
-  }
+  },
 };
 </script>
 
@@ -114,10 +113,10 @@ export default {
   width: 100%;
 }
 .color-bar {
-    width: 226px;
+  width: 226px;
 }
 .parent-container {
-    max-width: 1100px;
-    margin: 0 auto;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 </style>

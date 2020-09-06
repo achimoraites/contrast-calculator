@@ -7,12 +7,12 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
-    name: 'ContrastCalculator',
+    name: 'Home',
     component: ContrastCalculator
   },
   {
     path: '/:colorA/:colorB',
-    name: 'ContrastCalculator',
+    name: 'PreSelectedColors',
     component: ContrastCalculator
   },
 ]
