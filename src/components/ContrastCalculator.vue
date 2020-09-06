@@ -6,6 +6,7 @@
         <div class="tile">
           <div class="tile is-parent is-vertical">
             <article class="tile is-child notification">
+              <h3>Contrast is {{contrast}}</h3>
               <label for="text">Image URL</label>
               <input class="settings__url" type="text" v-model="imageUrl" />
 
@@ -13,10 +14,10 @@
                 <div class="column">
                   <h3 class="is-size-4">Color A</h3>
                   <div
-                    :style="{backgroundColor: `rgb(${colorA})`}"
+                    :style="{backgroundColor: `${colorA}`}"
                     class="tile is-child notification color-bar"
                   ></div>
-                  <chrome-picker :disableAlpha="true" :value="$data._colorA" @input="setColorA" />
+                  <chrome-picker :disableAlpha="true" :value="colorA" @input="setColorA" />
                 </div>
                 <div class="column">
                   <h3 class="is-size-4">Color B</h3>
@@ -24,7 +25,7 @@
                     :style="{backgroundColor: `rgb(${colorB})`}"
                     class="tile is-child notification color-bar"
                   ></div>
-                  <chrome-picker :disableAlpha="true" :value="$data._colorB" @input="setColorB" />
+                  <chrome-picker :disableAlpha="true" :value="colorB" @input="setColorB" />
                 </div>
               </div>
             </article>
@@ -38,19 +39,12 @@
           </div>
         </div>
       </div>
-      <!-- <div class="tile is-parent">
-        <preview-card 
-            :colorA="colorB" 
-            :colorB="colorA"
-            :imageUrl="imageUrl" 
-          />
-      </div>-->
     </div>
   </div>
 </template>
 
 <script>
-import { contrast, hexToRgb } from "../lib/ContrastCalculate";
+import { contrast } from "../lib/ContrastCalculate";
 import PreviewCard from "./PreviewCard";
 import { Chrome } from "vue-color";
 
@@ -65,10 +59,8 @@ export default {
   },
   data: () => ({
     test: "Constrast Calculator",
-    colorA: [0, 0, 0],
-    _colorA: "",
-    colorB: [255, 0, 100],
-    _colorB: "",
+    colorA: "#000000",
+    colorB: "#ffffff",
     imageUrl: "https://bulma.io/images/placeholders/640x480.png",
     render: 0,
     inversed: false,
@@ -80,17 +72,23 @@ export default {
   },
   methods: {
     setColorA(color) {
-      console.log(color);
-      this.colorA = hexToRgb(color.hex);
-      this.$data._colorA = color.hex;
+      this.colorA = color.hex;
       console.log(this.colorA);
     },
     setColorB(color) {
-      console.log(color);
-      this.colorB = hexToRgb(color.hex);
-      this.$data._colorB = color.hex;
+      this.colorB = color.hex;
       console.log(this.colorB);
     },
+    updateColors(colorA = '#000000', colorB = '#ffffff') {
+      this.colorA = colorA;
+      this.colorB = colorB;
+
+  },
+  },
+
+  mounted() {
+
+    this.updateColors();
   }
 };
 </script>
