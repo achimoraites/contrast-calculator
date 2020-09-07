@@ -14,14 +14,6 @@ Just another color contrast calculator!
 - UI/UX improvements
 - Contrast Ratings using the [WCAG 2.0](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) guidelines
 
-## Why 
-
-Just a quick and funny way to:
-- calculate the color contrast between two colors
-- preview the colors in more real life scenarios: as texts, Titles, buttons...
-- take over the world
-
 ## Current state
-(don't stare for too much it is hideous!!!)
 
 <img src ="./showcase/current-state.png" />
