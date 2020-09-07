@@ -1,5 +1,4 @@
 # contrast-calculator
-## (UNDER PROGRESS)
 Just another color contrast calculator!
 
 [You can try it here](https://achimoraites.github.io/contrast-calculator/#/)
