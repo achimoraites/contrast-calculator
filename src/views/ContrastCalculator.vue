@@ -13,19 +13,11 @@
               <div class="columns is-desktop">
                 <div class="column">
                   <h3 class="is-size-4">Color A</h3>
-                  <div
-                    :style="{backgroundColor: `${colorA}`}"
-                    class="tile is-child notification color-bar"
-                  ></div>
-                  <chrome-picker :disableAlpha="true" :value="colorA" @input="setColorA" />
+                  <color-picker :color="colorA" :setColor="setColorA" />
                 </div>
                 <div class="column">
                   <h3 class="is-size-4">Color B</h3>
-                  <div
-                    :style="{backgroundColor: `${colorB}`}"
-                    class="tile is-child notification color-bar"
-                  ></div>
-                  <chrome-picker :disableAlpha="true" :value="colorB" @input="setColorB" />
+                  <color-picker :color="colorB" :setColor="setColorB" />
                 </div>
               </div>
             </article>
@@ -46,13 +38,14 @@
 <script>
 import { contrast } from "../lib/ContrastCalculate";
 import PreviewCard from "../components/PreviewCard";
-import { Chrome } from "vue-color";
+import ColorPicker from "../components/ColorPicker";
+
 
 export default {
   name: "ContrastCalculator",
   components: {
-    "chrome-picker": Chrome,
-    PreviewCard: PreviewCard,
+    PreviewCard,
+    ColorPicker,
   },
   data: () => ({
     test: "Constrast Calculator",
@@ -74,14 +67,20 @@ export default {
   },
   methods: {
     setColorA(color) {
-      const colorA = new String(color.hex).replace('#', '');
-      const colorB = new String(this.colorB).replace('#', '');
-      this.$router.push({ name: 'PreSelectedColors', params: { colorA, colorB }})
+      const colorA = new String(color.hex).replace("#", "");
+      const colorB = new String(this.colorB).replace("#", "");
+      this.$router.push({
+        name: "PreSelectedColors",
+        params: { colorA, colorB },
+      });
     },
     setColorB(color) {
-      const colorA = new String(this.colorA).replace('#', '');
-      const colorB = new String(color.hex).replace('#', '');
-      this.$router.push({ name: 'PreSelectedColors', params: { colorA, colorB }})
+      const colorA = new String(this.colorA).replace("#", "");
+      const colorB = new String(color.hex).replace("#", "");
+      this.$router.push({
+        name: "PreSelectedColors",
+        params: { colorA, colorB },
+      });
     },
     getColorFromRoute(color) {
       return color ? `#${color}` : null;
