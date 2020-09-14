@@ -1,4 +1,4 @@
-function luminanace(r, g, b) {
+function luminance(r, g, b) {
   var a = [r, g, b].map(function (v) {
       v /= 255;
       return v <= 0.03928
@@ -10,8 +10,8 @@ function luminanace(r, g, b) {
 
 function contrast(rgb1, rgb2) {
   let { firstColor, secondColor } = sanitizeColors(rgb1, rgb2);
-  var lum1 = luminanace(firstColor[0], firstColor[1], firstColor[2]);
-  var lum2 = luminanace(secondColor[0], secondColor[1], secondColor[2]);
+  var lum1 = luminance(firstColor[0], firstColor[1], firstColor[2]);
+  var lum2 = luminance(secondColor[0], secondColor[1], secondColor[2]);
   var brightest = Math.max(lum1, lum2);
   var darkest = Math.min(lum1, lum2);
   return (brightest + 0.05)
