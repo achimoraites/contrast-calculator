@@ -40,7 +40,6 @@ import { contrast } from "../lib/ContrastCalculate";
 import PreviewCard from "../components/PreviewCard";
 import ColorPicker from "../components/ColorPicker";
 
-
 export default {
   name: "ContrastCalculator",
   components: {
@@ -69,19 +68,13 @@ export default {
     setColorA(color) {
       const colorA = new String(color.hex).replace("#", "");
       const colorB = new String(this.colorB).replace("#", "");
-      this.$router.push({
-        name: "PreSelectedColors",
-        params: { colorA, colorB },
-      });
+      this.updateRoute(colorA, colorB);
     },
     setColorB(color) {
       const colorA = new String(this.colorA).replace("#", "");
       const colorB = new String(color.hex).replace("#", "");
-      this.$router.push({
-        name: "PreSelectedColors",
-        params: { colorA, colorB },
-      });
-     },
+      this.updateRoute(colorA, colorB);
+    },
     getColorFromRoute(color) {
       return color ? `#${color}` : null;
     },
@@ -93,6 +86,12 @@ export default {
 
       this.colorA = colorA ? colorA : "#000000";
       this.colorB = colorB ? colorB : "#ffffff";
+    },
+    updateRoute(colorA, colorB) {
+      this.$router.push({
+        name: "PreSelectedColors",
+        params: { colorA, colorB },
+      });
     },
   },
 
