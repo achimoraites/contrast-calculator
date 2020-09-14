@@ -12,11 +12,11 @@
 
               <div class="columns is-desktop">
                 <div class="column">
-                  <h3 class="is-size-4">Color A</h3>
+                  <h3 class="is-size-4">Text Color</h3>
                   <color-picker :color="colorA" :setColor="setColorA" />
                 </div>
                 <div class="column">
-                  <h3 class="is-size-4">Color B</h3>
+                  <h3 class="is-size-4">Background Color</h3>
                   <color-picker :color="colorB" :setColor="setColorB" />
                 </div>
               </div>
@@ -81,7 +81,7 @@ export default {
         name: "PreSelectedColors",
         params: { colorA, colorB },
       });
-    },
+     },
     getColorFromRoute(color) {
       return color ? `#${color}` : null;
     },
