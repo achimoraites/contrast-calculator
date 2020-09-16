@@ -51,4 +51,8 @@ export default {
   font-weight: bold;
   text-shadow: 0px 1px 1px #d3d3d3;
 }
+
+.vc-chrome {
+  width: 100%
+}
 </style>

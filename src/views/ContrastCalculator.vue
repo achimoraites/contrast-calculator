@@ -6,7 +6,8 @@
         <div class="tile">
           <div class="tile is-parent is-vertical">
             <article class="tile is-child notification">
-              <h3>Contrast is {{contrast}}</h3>
+              <contrast-rating-card :contrast="contrast" />
+
               <label for="text">Image URL</label>
               <input class="settings__url" type="text" v-model="imageUrl" />
 
@@ -39,12 +40,14 @@
 import { contrast } from "../lib/ContrastCalculate";
 import PreviewCard from "../components/PreviewCard";
 import ColorPicker from "../components/ColorPicker";
+import ContrastRatingCard from "../components/ContrastRatingCard";
 
 export default {
   name: "ContrastCalculator",
   components: {
     PreviewCard,
     ColorPicker,
+    ContrastRatingCard,
   },
   data: () => ({
     test: "Constrast Calculator",
@@ -61,7 +64,7 @@ export default {
   },
   computed: {
     contrast() {
-      return contrast(this.colorA, this.colorB).toFixed(1);
+      return parseFloat(contrast(this.colorA, this.colorB).toFixed(1));
     },
   },
   methods: {
