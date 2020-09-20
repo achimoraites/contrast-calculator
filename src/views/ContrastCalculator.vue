@@ -119,7 +119,7 @@ export default {
   width: 226px;
 }
 .parent-container {
-  max-width: 1100px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 </style>
