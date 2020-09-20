@@ -22,14 +22,7 @@
               <p
                 :style="{color: `${colorA}`}"
               >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <button
-                :style="{color: `${colorA}`, backgroundColor: `${colorB}`}"
-                class="button mt-3"
-              >This is a button i guess</button>
-              <button
-                :style="{color: `${colorB}`, backgroundColor: `${colorA}`}"
-                class="button mt-3 mx-2"
-              >This is also a button</button>
+
             </article>
 </template>
 

@@ -8,9 +8,6 @@
             <article class="tile is-child notification">
               <contrast-rating-card :contrast="contrast" />
 
-              <label for="text">Image URL</label>
-              <input class="settings__url" type="text" v-model="imageUrl" />
-
               <div class="columns is-desktop">
                 <div class="column">
                   <h3 class="is-size-4">Text Color</h3>
