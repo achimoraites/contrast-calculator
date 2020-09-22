@@ -35,6 +35,7 @@
 
 <script>
 import { contrast } from "../lib/ContrastCalculate";
+import { debounce } from "../lib/utils";
 import PreviewCard from "../components/PreviewCard";
 import ColorPicker from "../components/ColorPicker";
 import ContrastRatingCard from "../components/ContrastRatingCard";
@@ -53,6 +54,7 @@ export default {
     imageUrl: "https://bulma.io/images/placeholders/640x480.png",
     render: 0,
     inversed: false,
+    debouncedUpdate: undefined,
   }),
   watch: {
     $route() {
@@ -66,17 +68,18 @@ export default {
   },
   methods: {
     setColorA(color) {
-      const colorA = new String(color.hex).replace("#", "");
-      const colorB = new String(this.colorB).replace("#", "");
-      this.updateRoute(colorA, colorB);
+      this.colorA = color.hex;
+      this.debouncedUpdate();
     },
     setColorB(color) {
-      const colorA = new String(this.colorA).replace("#", "");
-      const colorB = new String(color.hex).replace("#", "");
-      this.updateRoute(colorA, colorB);
+      this.colorB = color.hex;
+      this.debouncedUpdate();
     },
     getColorFromRoute(color) {
       return color ? `#${color}` : null;
+    },
+    stripHash(color) {
+      return new String(color).replace("#", "")
     },
     updateColors() {
       const params = { ...this.$route.params };
@@ -87,14 +90,19 @@ export default {
       this.colorA = colorA ? colorA : "#000000";
       this.colorB = colorB ? colorB : "#ffffff";
     },
-    updateRoute(colorA, colorB) {
+    updateRoute() {
       this.$router.push({
         name: "PreSelectedColors",
-        params: { colorA, colorB },
+        params: {
+          colorA: this.stripHash(this.colorA),
+          colorB: this.stripHash(this.colorB),
+        },
       });
     },
   },
-
+  beforeMount() {
+    this.debouncedUpdate = debounce(this.updateRoute, 1000);
+  },
   mounted() {
     this.updateColors();
   },
