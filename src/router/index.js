@@ -4,7 +4,7 @@ import ContrastCalculator from '../views/ContrastCalculator.vue'
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
     name: 'Home',

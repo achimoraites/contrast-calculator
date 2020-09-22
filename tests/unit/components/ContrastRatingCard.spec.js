@@ -17,53 +17,53 @@ describe('ContrastCalculator.vue', () => {
       const wrapper = shallowMount(ContrastRatingCard, {
         propsData: { contrast }
       })
-  
+
       const ratings = wrapper.findAll('.column');
       const WCAG_AA_LargeText = ratings.at(0);
-      const expectedClasses = [ 'column', 'rating', 'rating--pass' ];
-  
+      const expectedClasses = ['column', 'rating', 'rating--pass'];
+
       expect(WCAG_AA_LargeText.text()).toEqual('WCAG AA Large Text');
       expect(WCAG_AA_LargeText.classes()).toEqual(expectedClasses);
     })
-  
+
     it('should pass "WCAG AA Normal Text"', () => {
       const contrast = 4.5;
       const wrapper = shallowMount(ContrastRatingCard, {
         propsData: { contrast }
       })
-  
+
       const ratings = wrapper.findAll('.column');
       const WCAG_AA_LargeText = ratings.at(1);
-      const expectedClasses = [ 'column', 'rating', 'rating--pass' ];
-  
+      const expectedClasses = ['column', 'rating', 'rating--pass'];
+
       expect(WCAG_AA_LargeText.text()).toEqual('WCAG AA Normal Text');
       expect(WCAG_AA_LargeText.classes()).toEqual(expectedClasses);
     })
-  
+
     it('should pass "WCAG AAA Large Text"', () => {
       const contrast = 4.5;
       const wrapper = shallowMount(ContrastRatingCard, {
         propsData: { contrast }
       })
-  
+
       const ratings = wrapper.findAll('.column');
       const WCAG_AA_LargeText = ratings.at(2);
-      const expectedClasses = [ 'column', 'rating', 'rating--pass' ];
-  
+      const expectedClasses = ['column', 'rating', 'rating--pass'];
+
       expect(WCAG_AA_LargeText.text()).toEqual('WCAG AAA Large Text');
       expect(WCAG_AA_LargeText.classes()).toEqual(expectedClasses);
     })
-  
+
     it('should pass "WCAG AAA Normal Text"', () => {
       const contrast = 7;
       const wrapper = shallowMount(ContrastRatingCard, {
         propsData: { contrast }
       })
-  
+
       const ratings = wrapper.findAll('.column');
       const WCAG_AA_LargeText = ratings.at(3);
-      const expectedClasses = [ 'column', 'rating', 'rating--pass' ];
-  
+      const expectedClasses = ['column', 'rating', 'rating--pass'];
+
       expect(WCAG_AA_LargeText.text()).toEqual('WCAG AAA Normal Text');
       expect(WCAG_AA_LargeText.classes()).toEqual(expectedClasses);
     })
@@ -73,9 +73,9 @@ describe('ContrastCalculator.vue', () => {
       const wrapper = shallowMount(ContrastRatingCard, {
         propsData: { contrast }
       })
-  
+
       const passed = wrapper.findAll('.rating--pass').length;
-      
+
       expect(passed).toEqual(4);
     })
   })
@@ -86,53 +86,53 @@ describe('ContrastCalculator.vue', () => {
       const wrapper = shallowMount(ContrastRatingCard, {
         propsData: { contrast }
       })
-  
+
       const ratings = wrapper.findAll('.column');
       const WCAG_AA_LargeText = ratings.at(0);
-      const expectedClasses = [ 'column', 'rating', 'rating--fail' ];
-  
+      const expectedClasses = ['column', 'rating', 'rating--fail'];
+
       expect(WCAG_AA_LargeText.text()).toEqual('WCAG AA Large Text');
       expect(WCAG_AA_LargeText.classes()).toEqual(expectedClasses);
     })
-  
+
     it('should fail "WCAG AA Normal Text"', () => {
       const contrast = 4.4;
       const wrapper = shallowMount(ContrastRatingCard, {
         propsData: { contrast }
       })
-  
+
       const ratings = wrapper.findAll('.column');
       const WCAG_AA_LargeText = ratings.at(1);
-      const expectedClasses = [ 'column', 'rating', 'rating--fail' ];
-  
+      const expectedClasses = ['column', 'rating', 'rating--fail'];
+
       expect(WCAG_AA_LargeText.text()).toEqual('WCAG AA Normal Text');
       expect(WCAG_AA_LargeText.classes()).toEqual(expectedClasses);
     })
-  
+
     it('should fail "WCAG AAA Large Text"', () => {
       const contrast = 4.4;
       const wrapper = shallowMount(ContrastRatingCard, {
         propsData: { contrast }
       })
-  
+
       const ratings = wrapper.findAll('.column');
       const WCAG_AA_LargeText = ratings.at(2);
-      const expectedClasses = [ 'column', 'rating', 'rating--fail' ];
-  
+      const expectedClasses = ['column', 'rating', 'rating--fail'];
+
       expect(WCAG_AA_LargeText.text()).toEqual('WCAG AAA Large Text');
       expect(WCAG_AA_LargeText.classes()).toEqual(expectedClasses);
     })
-  
+
     it('should fail "WCAG AAA Normal Text"', () => {
       const contrast = 6.9;
       const wrapper = shallowMount(ContrastRatingCard, {
         propsData: { contrast }
       })
-  
+
       const ratings = wrapper.findAll('.column');
       const WCAG_AA_LargeText = ratings.at(3);
-      const expectedClasses = [ 'column', 'rating', 'rating--fail' ];
-  
+      const expectedClasses = ['column', 'rating', 'rating--fail'];
+
       expect(WCAG_AA_LargeText.text()).toEqual('WCAG AAA Normal Text');
       expect(WCAG_AA_LargeText.classes()).toEqual(expectedClasses);
     })
@@ -142,10 +142,10 @@ describe('ContrastCalculator.vue', () => {
       const wrapper = shallowMount(ContrastRatingCard, {
         propsData: { contrast }
       })
-  
+
       const passed = wrapper.findAll('.rating--pass').length;
       const failed = wrapper.findAll('.rating--fail').length;
-      
+
       expect(passed).toEqual(0);
       expect(failed).toEqual(4);
     })

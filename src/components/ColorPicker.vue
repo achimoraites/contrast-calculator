@@ -53,6 +53,6 @@ export default {
 }
 
 .vc-chrome {
-  width: 100%
+  width: 100%;
 }
 </style>

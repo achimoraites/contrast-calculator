@@ -79,7 +79,7 @@ export default {
       return color ? `#${color}` : null;
     },
     stripHash(color) {
-      return new String(color).replace("#", "")
+      return new String(color).replace("#", "");
     },
     updateColors() {
       const params = { ...this.$route.params };
