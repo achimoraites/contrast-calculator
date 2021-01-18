@@ -10,6 +10,7 @@ Just another color contrast calculator!
 - Contrast Ratings using the [WCAG 2.0](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) guidelines
 - Sharable : you can share the link with the selected colors
 
+
 ## Upcoming
 - UI/UX improvements
 
